@@ -1,0 +1,36 @@
+.main-header {
+    margin: 0 189px 37px;
+}
+
+.emoji {
+    margin-left: 24px;
+}
+
+.grid-cards {
+    display: grid;
+    grid-template-columns: 320px 267px 280px 645px;
+    grid-template-rows: 96px 220px 220px;
+    grid-template-areas: 
+    "description description description analytics"
+    ;
+    grid-column: 20px;
+    grid-row: 56px;
+}
+
+.carousel {
+    
+}
+.carousel-data {
+    color:#C5C4D9;
+    font-size: 15px;
+}
+
+.carousel-card-analytics {
+    background: #F0F6FD;
+    * {color: #4A6CED;}
+}
+
+.carousel-card {
+    color: #A5ACC9;
+
+}

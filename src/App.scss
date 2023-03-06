@@ -1,0 +1,126 @@
+@import url(./asserts/fonts/tt-travels.css);
+
+* {
+  font-size: 20px;
+  line-height: 23.99px;
+  font-weight: 500;
+  color: #2B2B2B;
+  letter-spacing: 0em;
+}
+
+h1 {
+  font-size: 45px;
+  font-weight: 700;
+  line-height: 53.99px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 47.99px;
+  text-align: center;
+}
+
+h3 {
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 35.99px;
+}
+
+h4 { 
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 29.99px;
+}
+
+h5 {
+  font-weight: 600;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "TT Travels";
+}
+
+a {
+  text-decoration: none;
+  font-weight: 400;
+}
+
+// styles
+.flex-row-center {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.circle-8 {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.circle-50 {
+  width: 50px;
+  height: 50px;
+  background: #EEF5FF;
+  border-radius: 50%;
+  svg {
+    display: block;
+    position: relative;
+    top: 18px;
+    left: 15px;
+  }
+}
+
+.circle-40 {
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 50%;
+  svg {
+    display: block;
+    position: relative;
+    top: 12px;
+    right: 33px;
+  }
+}
+
+.blue {
+  background: #243088;
+}
+
+// components
+
+// Header START
+header {
+  display: flex;
+  flex-direction: row; 
+  padding: 15px 60px;
+  justify-content: space-between;
+  box-shadow: 0px 0px 30px 0px #D3D6D6;
+  margin-bottom: 165px;
+}
+
+.logo {
+  gap: 10px;
+}
+
+.nav {
+  gap: 30px;
+}
+// Header END
+
+// GridCard START
+.grid-card {
+  background: #FFFFFF;
+  box-shadow: 4px 4px 40px rgba(0, 0, 0, 0.1);
+  border-radius: 30px;
+  p {
+    font-size: 12px;
+    line-height: 14.4px;
+  }
+}

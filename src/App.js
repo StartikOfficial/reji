@@ -1,8 +1,11 @@
-import './App.css';
+import './App.scss';
+import HomePage from './routes/pages/HomePage';
 
 function App() {
   return (
-    <>reji front</>
+    <>
+      <HomePage></HomePage>
+    </>
   );
 }
 
