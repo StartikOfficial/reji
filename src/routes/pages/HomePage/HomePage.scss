@@ -1,9 +1,59 @@
-.main-header {
-    margin: 0 189px 37px;
+.sections {
+    gap: 10px;
+    div {
+        color: #C5C4D9;
+        border: 1.5px solid #DCDBEB;
+        border-radius: 60px;
+        padding: 15px 22px 13px;
+    }
+    margin-bottom: 16px;
 }
 
-.emoji {
-    margin-left: 24px;
+.main-header {
+    margin: 0 auto;
+    max-width: 1080px;
+    // vertical-align: middle;
+    margin-bottom: 37px;
+}
+
+.examples-of-work {
+    background: linear-gradient(65.96deg, #E9E9F3 40.07%, rgba(180, 171, 248, 0.35) 142.34%, rgba(125, 105, 253, 0) 170.98%);
+    box-shadow: inset 5px 5px 15px #E0E0EA;
+    border-radius: 60px 60px 0px 0px;
+    display: flex;
+    flex-direction: row;
+    // max-width: 1320px;
+    margin: 0 60px;
+    padding: 0 auto;
+    justify-content: space-between;
+    img {
+        width: 28%;
+    }
+    div {
+        width: 63%;
+        margin-right: 61px;
+        margin-top: 50px;
+        * {
+            width: 100%;
+        }
+    }
+    .examples-of-work-text {
+        
+    }
+}
+
+.greetings {
+    background: #F2F5F5;
+    box-shadow: 0px 0px 30px #D3D6D6;
+    border-radius: 50px;
+}
+
+.greetings-header {
+    display: flex;
+    flex-direction: row;
+    img {
+        margin-left: 80px;
+    }
 }
 
 .grid-cards {
@@ -17,20 +67,148 @@
     grid-row: 56px;
 }
 
-.carousel {
-    
+#h2-how-we-work {
+    margin-bottom: 80px;
+    #span-how-we-work {
+        color: #4A6CED;
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 47.99px;
+    }
 }
+
+.carousel-tags {
+    gap: 30px;
+    margin-bottom: 85px;
+    li {
+        font-weight: 600;
+        color: #C5C4D9;
+    }
+    .active {
+        
+        color: #2B2B2B;
+        border-bottom: 2px solid #589CFF
+    }
+}
+
+.carousel {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+}
+
+.carousel-card {
+    max-width: 456px;
+    padding: 30px;
+    padding-right: 65px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 282px;
+    border-radius: 10px 10px 0px 0px;
+    .carousel-card-term {
+        color: #A5ACC9;
+        font-size: 12px;
+        line-height: 14.4px;
+    }
+    .carousel-card-description, ul li, .carousel-card-example span{
+        font-size: 15px;
+        line-height: 18px;
+    }
+    .carousel-card-description {
+        
+    }
+    .carousel-card-example {
+        justify-content: space-between;
+    }
+    .carousel-card-tag {
+        border-radius: 5px;
+        width: max-content;
+        padding: 10px;
+        background: white;
+        gap: 10px;
+        margin-top: auto;
+        span {
+            font-size: 12px;
+            font-weight: 600;
+            line-height: 14.4px;
+        }
+    }
+}
+
 .carousel-data {
     color:#C5C4D9;
     font-size: 15px;
+    margin: 0 0 30px 30px;
 }
 
 .carousel-card-analytics {
     background: #F0F6FD;
-    * {color: #4A6CED;}
+    border-bottom: 3px solid #4A6CED;
+    .circle-8 {
+        background: #4A6CED;
+    }
+    * {
+        color: #4A6CED;
+    }
 }
 
-.carousel-card {
-    color: #A5ACC9;
+.carousel-card-planning {
+    background: #F2FEF8;
+    border-bottom: 3px solid #539533;
+    .circle-8 {
+        background: #539533;
+    }
+    *, .carousel-card-example svg {
+        color: #539533;
+        fill: #539533;
+    }
+}
 
+.carousel-card-design {
+    background: #FBE8E8;
+    border-bottom: 3px solid #D65E5A;
+    .circle-8 {
+        background: #D65E5A;
+    }
+    *, .carousel-card-example svg {
+        color: #D65E5A;
+        fill: #D65E5A;
+    }
+}
+
+.carousel-card-development-blue {
+    background: #CDF2FB;
+    border-bottom: 3px solid #1E6776;
+    .circle-8 {
+        background: #1E6776;
+    }
+    *, .carousel-card-example svg {
+        color: #1E6776;
+        fill: #1E6776;
+    }
+}
+
+.carousel-card-development-yellow {
+    background: #FBFAE8;
+    border-bottom: 3px solid #D6CA5A;
+    .circle-8 {
+        background: #D6CA5A;
+    }
+    *, .carousel-card-example svg {
+        color: #D6CA5A;
+        fill: #D6CA5A;
+    }
+}
+
+.carousel-card-testing {
+    background: #F0F6FD;
+    border-bottom: 3px solid #4A6CED;
+    .circle-8 {
+        background: #4A6CED;
+    }
+    *, .carousel-card-example svg {
+        color: #4A6CED;
+        fill: #4A6CED;
+    }
 }
