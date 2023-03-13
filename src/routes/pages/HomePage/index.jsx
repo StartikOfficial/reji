@@ -12,6 +12,7 @@ import loveEyesEmoji from "../../../asserts/images/love-eyes-emoji.png";
 import heartEmoji from "../../../asserts/images/heart-emoji.png";
 import wavingHandEmoji from "../../../asserts/images/waving-hand-emoji.png";
 import ledVled from "../../../asserts/images/led-vled.png";
+//TODO закомментированный код без коммента зачем это закомментировано не нужно оставлять
 // import omskInfo from "../../../asserts/images/omsk-info.png";
 // import omskInfo from "../../../asserts/images/omsk-info-cropped.png";
 import backgroundS1 from "../../../asserts/images/background-s-1.jpg";
@@ -23,6 +24,7 @@ import backgroundL1 from "../../../asserts/images/background-l-1.jpg";
 export default function HomePage() {
     return (
     <>
+        {/*TODO пустые теги не надо оставлять*/}
         <Header></Header>
         <main>
             <div className="sections flex-row-center">
@@ -44,12 +46,14 @@ export default function HomePage() {
                 <img src={ledVled} height="100%" alt="led-vled"/>
                 <div>
                     <p className="examples-of-work-text">Специализируемся на разработке web-сайтов и 
-                        интернет-порталов. Cоздаем фирменные стили компаний, 
+                        интернет-порталов. Cоздаем фирменные стили компаний,
                         разрабатываем мобильные версии и приложения.</p>
                     <div id="omsk-info"></div>
+                    {/*//TODO закомментированный код без коммента зачем это закомментировано не нужно оставлять*/}
                     {/* <img width="100%" src={omskInfo} alt="omsk-info"/> */}
                 </div>
             </div>
+
             <div className="greetings">
                 <div>
                     <div className="greetings-header">
@@ -57,13 +61,13 @@ export default function HomePage() {
                             <h3>Здравствуйте</h3>
                             <p>Приветствуем на сайте it студии REJI</p>
                         </div>
-                    
+
                         <img src={wavingHandEmoji} alt="waving-hand"/>
                     </div>
                     <div className="grid-cards">
-                    <p className="grid-description">Мы используем индивидуальный подход и набор решений при разработке 
+                    <p className="grid-description">Мы используем индивидуальный подход и набор решений при разработке
                         сайтов — от предварительного изучения, анализа и проектирования
-                        веб-сайтов до создания интерактивных презентаций с 
+                        веб-сайтов до создания интерактивных презентаций с
                         описанием анимированных решений.️</p>
                     <GridCardLarge imageBackground={backgroundL1} className="grid-card grid-card-large grid-card-background">
                             <h4>Аналитика вашего проекта</h4>
@@ -98,11 +102,11 @@ export default function HomePage() {
                                 учитывающий особенности бизнеса!
                             </p>
                         </div>
-                        
+
                     </GridCard>
                     <GridCardSmall imageBackground={backgroundS1} className="grid-card grid-card-small grid-card-background">
                             <img src={lovelySmileEmoji} alt="" />
-                            <p>В работе применяем методологии waterfall или agile</p>                        
+                            <p>В работе применяем методологии waterfall или agile</p>
                     </GridCardSmall>
                     <GridCardMedium imageBackground={backgroundM1} className="grid-card grid-card-medium-cases grid-card-background">
                         <h4>Наши проекты</h4>
@@ -114,7 +118,7 @@ export default function HomePage() {
                                     <path d="M1 7C0.447715 7 0 7.44772 0 8C0 8.55228 0.447715 9 1 9V7ZM56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM1 9H56V7H1V9Z" fill="white"/>
                                 </svg>
                             </div>
-                        </div>   
+                        </div>
                     </GridCardMedium>
                     <div className="grid-row-3">
                         <GridCardSmall imageBackground={backgroundS2} className="grid-card grid-card-small grid-card-background">
@@ -124,7 +128,7 @@ export default function HomePage() {
                             <p>Наши продукты надежно защищены</p>
                         </GridCardSmall>
                         <GridCardMedium imageBackground={backgroundM2} className="grid-card grid-card-medium grid-card-background">
-                            
+
                             <h4>Проектируем</h4>
                             <p>рациональный дизайн для цифровых продуктов</p>
                             <div className="circle-40">
@@ -132,7 +136,7 @@ export default function HomePage() {
                                     <path d="M1 7C0.447715 7 0 7.44772 0 8C0 8.55228 0.447715 9 1 9V7ZM56.7071 8.70711C57.0976 8.31658 57.0976 7.68342 56.7071 7.29289L50.3431 0.928932C49.9526 0.538408 49.3195 0.538408 48.9289 0.928932C48.5384 1.31946 48.5384 1.95262 48.9289 2.34315L54.5858 8L48.9289 13.6569C48.5384 14.0474 48.5384 14.6805 48.9289 15.0711C49.3195 15.4616 49.9526 15.4616 50.3431 15.0711L56.7071 8.70711ZM1 9H56V7H1V9Z" fill="#447BC7"/>
                                 </svg>
                             </div>
-                            
+
                         </GridCardMedium>
                         <GridCard className="grid-card">
                             <div className="grid-card-two-video">
@@ -167,18 +171,15 @@ export default function HomePage() {
                                     <img className="emoji" src={heartEmoji} alt="heart"/>
                                 </div>
                             </div>
-                            
-                        </GridCard> 
+
+                        </GridCard>
                     </div>
-                    
-                    
+
+
                     </div >
                 </div>
-                
-                
-                
             </div>
-            
+
             <h2 id="h2-how-we-work">
                 <span id="span-how-we-work">
                 Как мы работаем</span> над проектом

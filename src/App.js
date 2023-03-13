@@ -4,7 +4,9 @@ import HomePage from './routes/pages/HomePage';
 function App() {
   return (
     <>
-      <HomePage></HomePage>
+        {/*TODO сдесь мы импортируем компонент и пока не предполагаем его куда вкладывать поэтому нужно так*/}
+      {/*<HomePage></HomePage>*/}
+        <HomePage/>
     </>
   );
 }
