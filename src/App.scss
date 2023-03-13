@@ -8,6 +8,7 @@
   letter-spacing: 0em;
   margin: 0;
   padding: 0;
+  font-family: "TT Travels";
 }
 
 h1 {
@@ -38,10 +39,6 @@ h4 {
 
 h5 {
   font-weight: 600;
-}
-
-body {
-  font-family: "TT Travels";
 }
 
 a {
@@ -79,6 +76,7 @@ li {
 }
 
 .circle-50 {
+  min-width: 50px;
   width: 50px;
   height: 50px;
   background: #EEF5FF;
@@ -86,8 +84,8 @@ li {
   svg {
     display: block;
     position: relative;
-    top: 18px;
-    left: 15px;
+    top: 20px;
+    left: 17px;
   }
 }
 
@@ -97,10 +95,13 @@ li {
   background: white;
   border-radius: 50%;
   svg {
-    display: block;
+    // display: inline;
     position: relative;
+    
+    // top: 12px;
+    float: right;
+    right: 15px;
     top: 12px;
-    right: 33px;
   }
 }
 
@@ -126,6 +127,20 @@ header {
 
 .nav {
   gap: 30px;
+  a {
+    margin-bottom: -5px;
+    padding-bottom: 5px;
+    background:
+    linear-gradient(#2B2B2B 0 0),
+    linear-gradient(white 0 0); 
+    background-size:0% 3px,100% 3px; /* we make the top one 0% width */
+    background-position:bottom ;
+    background-repeat:no-repeat;
+    transition:0.8s;
+    &:hover {
+      background-size:100% 3px; /* 100% width on hover */
+    }
+  }
   a:first-child::after {
     display: inline-block;
     content: '';
