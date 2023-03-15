@@ -1,7 +1,7 @@
 export default function GridCard(props) {
     return (
         props.imageBackground ? 
-        <div className={props.className} style={{backgroundImage: `url(${props.imageBackground})`, backgroundRepeat: "no-repeat", backgroundSize:'cover'}}>  
+        <div className={props.className} style={{backgroundImage: `url(${props.imageBackground})`}}>  
         {props.children}
         </div>
         :
