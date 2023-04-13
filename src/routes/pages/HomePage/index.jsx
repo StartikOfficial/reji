@@ -4,8 +4,6 @@ import "react-intl-tel-input/dist/main.css";
 import { useRef, useState, useEffect } from "react";
 import { HashLink } from "react-router-hash-link";
 import { Form } from "@unform/web";
-import IntlTelInput from "react-intl-tel-input";
-
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
@@ -15,6 +13,8 @@ import GridCardLarge from "../../../components/GridCardLarge";
 import GridCardMedium from "../../../components/GridCardMedium";
 import GridCardSmall from "../../../components/GridCardSmall";
 import Input from "../../../components/Input";
+import IntlTelInput from "react-intl-tel-input";
+import { OutsideClick } from "../../../components/OutsideClick";
 
 import { ArrowRight, Camera, Lock } from "../../../components/svgs";
 
@@ -36,17 +36,17 @@ export default function HomePage() {
 
     // для анимации приветствия
     const fadeLeft = {
-        visible: { opacity: 1, transition: { duration: 0.5 }, x: 0},
+        visible: { opacity: 1, transition: { duration: 0.5, delay: 0.3 }, x: 0},
         hidden: { opacity: 0, x: -200}
-      };
-      const fadeDown = {
-        visible: { opacity: 1, transition: { duration: 0.5 }, y: 0, x:0},
-        hidden: { opacity: 0, y: 200}
-      };
-      const fadeRight = {
-        visible: { opacity: 1, transition: { duration: 0.5 }, x: 0},
+    };
+    const fadeDown = {
+    visible: { opacity: 1, transition: { duration: 0.5, delay: 0.3 }, y: 0, x:0},
+    hidden: { opacity: 0, y: 200}
+    };
+    const fadeRight = {
+        visible: { opacity: 1, transition: { duration: 0.5, delay: 0.3   }, x: 0},
         hidden: { opacity: 0, x: 100}
-      };
+    };
 
     const control = useAnimation();
     const [animateRef, inView] = useInView();
@@ -115,43 +115,49 @@ export default function HomePage() {
         reset();
       }
     
-    // хук для обработки события при нажатии вне блока с ref
-    const [isComponentVisible, setIsComponentVisible] = useState(false);
-
-    const visibleRef = useRef();
-    useEffect(() => {
-        const handleEscape = (event) => {
-          if (event.key === "Escape") {
-            setIsComponentVisible(false);
-          }
-        };
-      
-        const handleClickOutside = event => {
-          if (visibleRef.current && !visibleRef.current.contains(event.target)) {
-            setIsComponentVisible(false);
-          }
-        };
-        document.addEventListener("keydown", handleEscape);
-        document.addEventListener("click", handleClickOutside);
-        // document.addEventListener("touchstart", handleClickOutside)
-        return () => {
-          document.removeEventListener("keydown", handleEscape);
-          document.removeEventListener("click", handleClickOutside);
-          // document.removeEventListener("touchstart", handleClickOutside)
-      };
-      }, [visibleRef, setIsComponentVisible]);
-        
-    // для скролла только form-wrapper
-    useEffect(() => {
+    // обработка события при нажатии вне блока формы
+    const [isFormWrapperOpen, setIsFormWrapperOpen] = useState(false);  
+    const toggleFormWrapper = () => {setIsFormWrapperOpen(!isFormWrapperOpen);};
+    useEffect(()=>{
         const body = document.body;
-        const formWrapper = document.querySelector(".form-wrapper");
-        // body.style.overflow = "hidden";
-        // formWrapper.style.overflowY = "auto";
-        // formWrapper.style.display = "block";                     
-        formWrapper.style.display = "none";                     
-        
-      }, []);
+        if (isFormWrapperOpen) {
+            body.style.overflow = "hidden";
+        } else {
+            body.style.overflow = "auto";
+        }
+    })
 
+    // появление кнопки активировать
+    const [promocodeButtonShown, setPromocodeButtonShown] = useState(false);
+    const promocodeRef = useRef(null);
+    const showPromocodeButton = (promocode) => {
+        setPromocodeButtonShown(true);
+        if (promocode) {
+            promocode.children[0].style.width = "50%";
+        }  
+    }
+
+    // обработка кнопки активировать
+    const handlePromocodeButton = () => {
+        alert("Указанный промокод не найден или не действителен");
+        const promocodeInput = document.querySelector("#input-promocode");
+        promocodeInput.value = "";
+    }
+
+    // нормализация инпута номера телефона
+    const [phoneNumber, setPhoneNumber] = useState();
+    const [phoneNumberString, setPhoneNumberString] = useState();
+    const normalizeInput = (currentValue) => {
+        const cvLength = currentValue.length;
+        
+        if (currentValue) {
+          if (cvLength < 4) return currentValue;
+          if (cvLength < 7) return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`;
+          return `(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`;
+        }
+      };
+
+      
     return (
     <>
         <Header/>
@@ -290,7 +296,7 @@ export default function HomePage() {
                             <h4>Аналитика вашего проекта</h4>
                             <p>Оставьте заявку сейчас и получите готовый аналитический отчет о вашем сайте на почту.</p>
                             <span className="price">490₽</span>
-                            <button className="application-btn flex-row-center" onClick={()=>setIsComponentVisible(true)}>
+                            <button className="application-btn flex-row-center" onClick={toggleFormWrapper}>
                                 <span>Оставить заявку</span>
                                 <ArrowRight className="arrow-right-orange"/>
                             </button>
@@ -300,29 +306,84 @@ export default function HomePage() {
                 </div>
             </div>
 
-            {<div className={isComponentVisible ? "form-wrapper" : "form-wrapper none"} ref={visibleRef} onClose={()=>setIsComponentVisible(false)}>
-                                <Form className="form-application" onSubmit={handleSubmit}>
-                                    <div className="order">
-                                        <h3>Ваш заказ:</h3>
-                                        <ul className="order-products"></ul>
-                                        <span className="order-sum">Сумма: 0 руб.</span>
-                                    </div>
-                                    <Input name="first-name" label="Ваше имя" placeholder="Иван"/>
-                                    <Input name="surname" label="Ваша фамилия" placeholder="Иванов"/>
-                                    <Input name="email" label="Ваш email" type="email" placeholder="hello@thereji.com"/>
-                                    <div>
-                                    <label for="phone-number">Whatsapp/Telegram</label>
-                                    <IntlTelInput name="phone-number" id="input-phone-number" placeholder="(999) 999-999"></IntlTelInput>
-                                    </div>
-                                    <div>
-                                        <Input name="promocode" label="Промокод" id="input-promocode" placeholder="Введите промокод"/>
-                                        <button>Активировать</button>
-                                    </div>
-
-                                    <button type="submit">Save</button>
-                                    <span>Нажимая на кнопку, Вы соглашаетесь с <a href="#">Политикой конфиденциальности</a></span>
-                                </Form>
-                            </div>}
+            {isFormWrapperOpen && <div className="form-wrapper">
+                    <OutsideClick onClickOutside={toggleFormWrapper} show={isFormWrapperOpen}>
+                        <Form className="form-application" onSubmit={handleSubmit}>
+                            <div className="order">
+                                <h3>Ваш заказ:</h3>
+                                <ul className="order-products"></ul>
+                                <span className="order-sum">Сумма: 0 руб.</span>
+                            </div>
+                            <Input name="first-name" label="Ваше имя" placeholder="Иван"/>
+                            <Input name="surname" label="Ваша фамилия" placeholder="Иванов"/>
+                            <Input name="email" label="Ваш email" type="email" placeholder="hello@thereji.com"/>
+                            <div>
+                                
+                            <label htmlFor="phone-number">Whatsapp/Telegram</label>
+                            <IntlTelInput 
+                            telInputProps={{
+                                onKeyPress: (event) => {
+                                //   const regex = /^[+0-9]*$/;
+                                //   if (event.key === "Enter") return true;
+                                //   const test = new RegExp(regex).test(event.key);
+                                //   const currentValue = event.target.value+event.key;
+                                //   const cvLength = currentValue.length;
+                                // if (!test) event.preventDefault();
+                                // if (currentValue) {
+                                // if (cvLength < 4) return setPhoneNumber(currentValue);
+                                // if (cvLength < 7) return setPhoneNumber(`(${currentValue.slice(0, 3)}) ${currentValue.slice(3)}`);
+                                // return setPhoneNumber(`(${currentValue.slice(0, 3)}) ${currentValue.slice(3, 6)}-${currentValue.slice(6, 10)}`);
+                                // }
+                                // console.log(event.key);
+                                // if (event.key !== "Backspace") setPhoneNumber(prev => prev+event.key.replace(/\D/g,''));
+                                // if (phoneNumber.length > 3) setPhoneNumber(prev => `${prev.slice(0,3)}-${prev.slice(3,phoneNumber.length)}`);
+                                // setPhoneNumber(prev => prev+"");
+                                // setPhoneNumber(prev => prev.replace(",",""));
+                                // let x = phoneNumber.split('.');
+                                // let x1 = x[0];
+                                // let x2 = x.length > 1 ? '.' + x[1] : '';
+                                // var rgx = /(\d+)(\d{3})/;
+                                // while (rgx.test(x1)) {
+                                //     x1 = x1.replace(rgx, '$1' + ',' + '$2');
+                                // }
+                                // setPhoneNumber(x1+x2);
+                                },
+                              }}
+                                value={phoneNumberString}
+                                onPhoneNumberChange={(b, n, c, number) => {
+                                    // setPhoneNumber(normalizeInput(n));
+                                    // console.log(phoneNumber);
+                                    // console.log(n);
+                                    const num = n.replace(/[^0-9]/g,'');
+                                    const length = num?.length;
+                                    if (length === 10 && !phoneNumber) {setPhoneNumber(num); setPhoneNumberString(`(${num.slice(0, 3)}) ${num.slice(3, 6)}-${num.slice(6, 8)}-${num.slice(8, 10)}`)}
+                                    else {setPhoneNumberString(num); setPhoneNumber(null)};
+                                    console.log(number)
+                                    console.log(length)
+                                    // console.log(n);
+                                    // : setPhoneNumber(prev => prev.replace(/-/g,''));
+                                    // if (phoneNumber) {
+                                    //     (phoneNumber.length < 3) && setPhoneNumber(prev => prev.replace(/-/g,''));
+                                    //     (phoneNumber.length < 7) && setPhoneNumber(prev => `${prev.slice(0,3)}-${prev.slice(3)}`);
+                                    //     (phoneNumber.length < 12) && setPhoneNumber(prev => `${prev.slice(0,3)}-${prev.slice(3)}-${prev.slice(7,)}`);
+                                    // }
+                                    
+                                }}
+                                preferredCountries={['ru']} 
+                                name="phone-number" 
+                                placeholder="(999) 999-99-99" 
+                                separateDialCode={true}/>
+                            </div>
+                            <label htmlFor="promocode" >Промокод</label>
+                            <div className="flex-row-center promocode" onClick={()=>showPromocodeButton(promocodeRef.current)}>
+                                <input id="input-promocode" name="promocode" placeholder="Введите промокод"/>
+                                <div className={promocodeButtonShown ? "promocode-button" : "none"} onClick={handlePromocodeButton}>Активировать</div>
+                            </div>
+                            <button type="submit">Оформить</button>
+                            <span>Нажимая на кнопку, Вы соглашаетесь с <a href="#">Политикой конфиденциальности</a></span>
+                        </Form>
+                    </OutsideClick>   
+                </div>}
 
             <section className="how-we-work">
                 <h2 id="h2-how-we-work">

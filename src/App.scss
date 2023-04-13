@@ -60,12 +60,19 @@ li {
 // styles
 .none {
   display: none;
+  // overflow: none;
 }
 .flex-row-center {
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
+}
+
+.flex-column-start {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
 }
 
 .emoji-wrapper {
@@ -177,6 +184,7 @@ header {
     &:hover {
       background-size:100% 3px;
     }
+    
   }
   a:first-child::after {
     display: inline-block;
@@ -186,6 +194,22 @@ header {
     background-color: black;
     position: absolute;
     border-radius: 50%;
+  }
+  .language {
+    gap: 5px;
+    span {
+      color:#939393;
+      cursor: pointer;
+      transition: color 0.3s;
+    }
+    .vertical {
+      width: 2px;
+      height: 22px;
+      background-color: black;
+    }
+    .active {
+      color: #2B2B2B;
+    } 
   }
 }
 // Header END

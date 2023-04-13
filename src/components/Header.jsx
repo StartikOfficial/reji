@@ -1,5 +1,5 @@
 import { LogoName, LogoIcon } from "./svgs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export default function Header() {
     useEffect(() => {
@@ -36,6 +36,8 @@ export default function Header() {
         }
     }
 
+    const [activeLanguage, setActiveLanguage] = useState("RU");
+
     return (
     <header>
         <input type="checkbox" onClick={() => blackout()}></input>
@@ -55,9 +57,14 @@ export default function Header() {
             <a href="#">Стек Технологий</a>
             <a href="#">План работы</a>
             <a href="#">Контакты</a>
-            <div className="language">
-                <span>EN</span>
-                <span>RU</span>
+            <div className="language flex-row-center">
+                <span id="language-EN" 
+                    className={activeLanguage === "EN" ? "active" : ""} 
+                    onClick={() => setActiveLanguage("EN")}>EN</span>
+                    <div className="vertical"></div>
+                <span id="language-RU" 
+                    className={activeLanguage === "RU" ? "active" : ""} 
+                    onClick={() => setActiveLanguage("RU")}>RU</span>
             </div>
         </nav>
     </header>
