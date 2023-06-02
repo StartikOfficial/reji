@@ -1,7 +1,8 @@
 {
   "files": {
-    "main.css": "/reji/static/css/main.fdacadd8.css",
-    "main.js": "/reji/static/js/main.6fdbeb5f.js",
+    "main.css": "/reji/static/css/main.e271ce5f.css",
+    "main.js": "/reji/static/js/main.318b7092.js",
+    "static/js/765.d86fd819.chunk.js": "/reji/static/js/765.d86fd819.chunk.js",
     "static/media/omsk-info-cropped.png": "/reji/static/media/omsk-info-cropped.669a2d85fd7e7e3ea21d.png",
     "static/media/led-vled.png": "/reji/static/media/led-vled.5fcbddf8037ad936cf18.png",
     "static/media/TTTravels-ThinItalic.eot": "/reji/static/media/TTTravels-ThinItalic.1030cf8288fc95e0ca0b.eot",
@@ -40,6 +41,7 @@
     "static/media/TTTravels-Black.eot": "/reji/static/media/TTTravels-Black.469ce645869521547c63.eot",
     "static/media/TTTravels-ExtraBold.ttf": "/reji/static/media/TTTravels-ExtraBold.5e7f12b230a9b2321763.ttf",
     "static/media/TTTravels-Black.ttf": "/reji/static/media/TTTravels-Black.b32927c35ed89876117a.ttf",
+    "static/media/flags@2x.png": "/reji/static/media/flags@2x.140042eba8c90ae1cede.png",
     "static/media/TTTravels-LightItalic.woff": "/reji/static/media/TTTravels-LightItalic.8799c22d70599fcc4ce5.woff",
     "static/media/TTTravels-ExtraLightItalic.woff": "/reji/static/media/TTTravels-ExtraLightItalic.fd80bb341f50bc9efa9f.woff",
     "static/media/TTTravels-ThinItalic.woff": "/reji/static/media/TTTravels-ThinItalic.f4f57a6f0c2ea6a578e7.woff",
@@ -80,13 +82,15 @@
     "static/media/TTTravels-ExtraBold.woff2": "/reji/static/media/TTTravels-ExtraBold.1217b538c6053dc7decc.woff2",
     "static/media/TTTravels-Black.woff2": "/reji/static/media/TTTravels-Black.f61c66e5ad031e1569ff.woff2",
     "static/media/background-s-2.png": "/reji/static/media/background-s-2.414e2d0640f6aa6e9ac6.png",
+    "static/media/flags.png": "/reji/static/media/flags.ae53191452bb217f0fa6.png",
     "static/media/background-s-1.png": "/reji/static/media/background-s-1.7b2a7326c41289b48c57.png",
     "index.html": "/reji/index.html",
-    "main.fdacadd8.css.map": "/reji/static/css/main.fdacadd8.css.map",
-    "main.6fdbeb5f.js.map": "/reji/static/js/main.6fdbeb5f.js.map"
+    "main.e271ce5f.css.map": "/reji/static/css/main.e271ce5f.css.map",
+    "main.318b7092.js.map": "/reji/static/js/main.318b7092.js.map",
+    "765.d86fd819.chunk.js.map": "/reji/static/js/765.d86fd819.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.fdacadd8.css",
-    "static/js/main.6fdbeb5f.js"
+    "static/css/main.e271ce5f.css",
+    "static/js/main.318b7092.js"
   ]
 }
